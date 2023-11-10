@@ -132,7 +132,7 @@
                                           <String fx:value="shadow" />
                                        </styleClass>
                                        <children>
-                                          <TextField layoutX="19.0" layoutY="13.0" prefHeight="30.0" prefWidth="246.0" promptText="Search" styleClass="search" stylesheets="@../css/dashboard.css">
+                                          <TextField fx:id="searchTextField" layoutX="19.0" layoutY="13.0" prefHeight="30.0" prefWidth="246.0" promptText="Search" styleClass="search" stylesheets="@../css/dashboard.css">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -151,6 +151,16 @@
                                                 <TableColumn fx:id="enableColumn" prefWidth="86.39996337890625" text="Enable" />
                                             </columns>
                                           </TableView>
+                                          <Button layoutX="281.0" layoutY="12.0" mnemonicParsing="false" onAction="#searchEvent" prefHeight="35.0" prefWidth="80.0" styleClass="update-btn" stylesheets="@../css/dashboard.css" text="Search" textFill="#f4f1f1">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="371.0" layoutY="12.0" mnemonicParsing="false" onAction="#showAllListEvent" prefHeight="35.0" prefWidth="114.0" styleClass="update-btn" stylesheets="@../css/dashboard.css" text="Show All List" textFill="#f4f1f1">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
                                        </children>
                                     </AnchorPane>
                                     <Label layoutX="26.0" layoutY="308.0" prefHeight="18.0" prefWidth="63.0" text="ID:">
@@ -253,7 +263,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="ceatedAuthorTextField" layoutX="857.0" layoutY="379.0" styleClass="textfield" stylesheets="@../css/dashboard.css">
+                                    <TextField fx:id="createdAuthorTextField" layoutX="857.0" layoutY="379.0" styleClass="textfield" stylesheets="@../css/dashboard.css">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -271,7 +281,7 @@
                                     <DatePicker fx:id="modifiedTextField" layoutX="468.0" layoutY="351.2" prefHeight="30.0" prefWidth="172.0" promptText="Select Date" styleClass="textfield" stylesheets="@../css/dashboard.css" AnchorPane.bottomAnchor="147.0" AnchorPane.topAnchor="351.0" />
                                     <DatePicker fx:id="deletedDateTextField" layoutX="468.0" layoutY="390.0" prefHeight="30.0" promptText="Select Date" styleClass="textfield" stylesheets="@../css/dashboard.css" />
                                     <DatePicker fx:id="createdTextField" layoutX="468.0" layoutY="312.0" prefHeight="30.0" promptText="Select Date" styleClass="textfield" stylesheets="@../css/dashboard.css" />
-                                    <Button layoutX="683.0" layoutY="475.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="80.0" styleClass="add-btn" stylesheets="@../css/dashboard.css" text="Add">
+                                    <Button layoutX="683.0" layoutY="475.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="35.0" prefWidth="80.0" styleClass="add-btn" stylesheets="@../css/dashboard.css" text="Add">
                                        <font>
                                           <Font name="Tahoma Bold" size="14.0" />
                                        </font>
@@ -281,7 +291,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="868.0" layoutY="473.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="80.0" styleClass="update-btn" stylesheets="@../css/dashboard.css" text="Update">
+                                    <Button layoutX="868.0" layoutY="473.0" mnemonicParsing="false" onAction="#updateEvent" prefHeight="35.0" prefWidth="80.0" styleClass="update-btn" stylesheets="@../css/dashboard.css" text="Update">
                                        <font>
                                           <Font size="14.0" />
                                        </font>

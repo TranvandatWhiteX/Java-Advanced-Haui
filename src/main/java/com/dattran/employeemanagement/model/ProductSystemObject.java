@@ -40,6 +40,22 @@ public class ProductSystemObject {
         this.productSystem_language = productSystem_language;
     }
 
+    public ProductSystemObject(String productSystem_name, int productSystem_manager_id, int productSystem_delete, String productSystem_notes, String productSystem_created_date, String productSystem_deleted_date, String productSystem_modified_date, String productSystem_deleted_author, String productSystem_table, int productSystem_enable, String productSystem_name_en, int productSystem_created_author_id, int productSystem_language) {
+        this.productSystem_name = productSystem_name;
+        this.productSystem_manager_id = productSystem_manager_id;
+        this.productSystem_delete = productSystem_delete;
+        this.productSystem_notes = productSystem_notes;
+        this.productSystem_created_date = productSystem_created_date;
+        this.productSystem_deleted_date = productSystem_deleted_date;
+        this.productSystem_modified_date = productSystem_modified_date;
+        this.productSystem_deleted_author = productSystem_deleted_author;
+        this.productSystem_table = productSystem_table;
+        this.productSystem_enable = productSystem_enable;
+        this.productSystem_name_en = productSystem_name_en;
+        this.productSystem_created_author_id = productSystem_created_author_id;
+        this.productSystem_language = productSystem_language;
+    }
+
     public int getProductSystem_delete() {
         return productSystem_delete;
     }
