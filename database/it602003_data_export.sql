@@ -1,42 +1,62 @@
-CREATE DATABASE it6020003_data;
-USE it6020003_data;
+CREATE DATABASE  IF NOT EXISTS `it6020003_data` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `it6020003_data`;
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+--
+-- Host: localhost    Database: it6020003_data
+-- ------------------------------------------------------
+-- Server version	8.0.34
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `tblarticle`
+--
 
 DROP TABLE IF EXISTS `tblarticle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tblarticle` (
-  `article_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `article_title` varchar(300) CHARACTER SET utf8 NOT NULL,
-  `article_summary` text CHARACTER SET utf8,
-  `article_content` longtext CHARACTER SET utf8,
-  `article_created_date` varchar(150) CHARACTER SET utf8 DEFAULT NULL,
-  `article_last_modified` varchar(150) CHARACTER SET utf8 DEFAULT NULL,
-  `article_image` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
-  `article_category_id` smallint(5) unsigned NOT NULL,
-  `article_section_id` smallint(5) unsigned NOT NULL,
-  `article_visited` smallint(5) unsigned DEFAULT NULL,
-  `article_author_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `article_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `article_title` varchar(300) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `article_summary` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci,
+  `article_content` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci,
+  `article_created_date` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `article_last_modified` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `article_image` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `article_category_id` smallint unsigned NOT NULL,
+  `article_section_id` smallint unsigned NOT NULL,
+  `article_visited` smallint unsigned DEFAULT NULL,
+  `article_author_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `article_enable` tinyint(1) DEFAULT NULL,
-  `article_url_link` varchar(300) CHARACTER SET utf8 DEFAULT NULL,
-  `article_tag` varchar(300) CHARACTER SET utf8 DEFAULT NULL,
-  `article_title_en` varchar(300) CHARACTER SET utf8 DEFAULT NULL COMMENT 'Tieu de tieng Anh',
-  `article_summary_en` text CHARACTER SET utf8 COMMENT 'Tom tat tieng Anh',
-  `article_content_en` longtext CHARACTER SET utf8 COMMENT 'Noi dung tieng Anh',
-  `article_tag_en` varchar(300) CHARACTER SET utf8 DEFAULT NULL COMMENT 'Tu khoa tim kiem tieng Anh',
-  `article_fee` int(10) unsigned DEFAULT NULL,
+  `article_url_link` varchar(300) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `article_tag` varchar(300) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `article_title_en` varchar(300) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT 'Tieu de tieng Anh',
+  `article_summary_en` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci COMMENT 'Tom tat tieng Anh',
+  `article_content_en` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci COMMENT 'Noi dung tieng Anh',
+  `article_tag_en` varchar(300) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT 'Tu khoa tim kiem tieng Anh',
+  `article_fee` int unsigned DEFAULT NULL,
   `article_isfee` tinyint(1) DEFAULT NULL,
   `article_delete` tinyint(1) DEFAULT '0',
-  `article_deleted_date` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `article_restored_date` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `article_modified_author_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `article_author_permission` smallint(5) unsigned DEFAULT NULL,
-  `article_source` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Nguon tham khao',
-  `article_language` smallint(3) unsigned DEFAULT NULL,
+  `article_deleted_date` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `article_restored_date` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `article_modified_author_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `article_author_permission` smallint unsigned DEFAULT NULL,
+  `article_source` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL COMMENT 'Nguon tham khao',
+  `article_language` smallint unsigned DEFAULT NULL,
   `article_focus` tinyint(1) DEFAULT NULL,
-  `article_type` smallint(3) unsigned DEFAULT NULL,
+  `article_type` smallint unsigned DEFAULT NULL,
   `article_forhome` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`article_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,25 +70,29 @@ INSERT INTO `tblarticle` VALUES (127,'N&#259;m 2016 H&agrave; N&#7897;i m&#7899;
 /*!40000 ALTER TABLE `tblarticle` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `tblcategory`
+--
+
 DROP TABLE IF EXISTS `tblcategory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tblcategory` (
-  `category_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` smallint unsigned NOT NULL AUTO_INCREMENT,
   `category_name` varchar(200) NOT NULL,
-  `category_section_id` smallint(5) unsigned NOT NULL,
+  `category_section_id` smallint unsigned NOT NULL,
   `category_notes` text,
   `category_created_date` varchar(50) DEFAULT NULL,
-  `category_created_author_id` int(10) unsigned DEFAULT NULL,
+  `category_created_author_id` int unsigned DEFAULT NULL,
   `category_last_modified` varchar(50) DEFAULT NULL,
-  `category_manager_id` int(10) unsigned DEFAULT NULL,
+  `category_manager_id` int unsigned DEFAULT NULL,
   `category_enable` tinyint(1) DEFAULT NULL,
   `category_delete` tinyint(1) DEFAULT NULL,
   `category_image` varchar(200) DEFAULT NULL,
   `category_name_en` varchar(200) DEFAULT NULL COMMENT 'The loai tieng Anh',
-  `category_language` smallint(3) unsigned DEFAULT NULL,
+  `category_language` smallint unsigned DEFAULT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,8 +105,6 @@ INSERT INTO `tblcategory` VALUES (20,'Tin t&#7913;c MIKADO',2,'Tin t&#7913;c ho&
 /*!40000 ALTER TABLE `tblcategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
-
 --
 -- Table structure for table `tblpc`
 --
@@ -91,11 +113,11 @@ DROP TABLE IF EXISTS `tblpc`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tblpc` (
-  `pc_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pc_id` int unsigned NOT NULL AUTO_INCREMENT,
   `pc_name` varchar(200) NOT NULL,
-  `pc_pg_id` int(10) unsigned NOT NULL,
-  `pc_ps_id` smallint(3) unsigned NOT NULL,
-  `pc_manager_id` int(10) unsigned DEFAULT NULL,
+  `pc_pg_id` int unsigned NOT NULL,
+  `pc_ps_id` smallint unsigned NOT NULL,
+  `pc_manager_id` int unsigned DEFAULT NULL,
   `pc_notes` text,
   `pc_delete` tinyint(1) DEFAULT NULL,
   `pc_deleted_date` varchar(45) DEFAULT NULL,
@@ -103,14 +125,22 @@ CREATE TABLE `tblpc` (
   `pc_modified_date` varchar(45) DEFAULT NULL,
   `pc_created_date` varchar(45) DEFAULT NULL,
   `pc_image` varchar(100) DEFAULT NULL COMMENT 'Anh minh hoa cho the loai',
-  `pc_enable` tinyint(1) unsigned DEFAULT NULL COMMENT 'Hien thi hay khong',
+  `pc_enable` tinyint unsigned DEFAULT NULL COMMENT 'Hien thi hay khong',
   `pc_name_en` varchar(200) DEFAULT NULL COMMENT 'Ten The loai san pham tieng Anh',
-  `pc_created_author_id` int(10) unsigned DEFAULT '0',
-  `pc_language` smallint(3) unsigned DEFAULT NULL,
+  `pc_created_author_id` int unsigned DEFAULT '0',
+  `pc_language` smallint unsigned DEFAULT NULL,
   PRIMARY KEY (`pc_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `tblpc`
+--
+
+LOCK TABLES `tblpc` WRITE;
+/*!40000 ALTER TABLE `tblpc` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tblpc` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblpg`
@@ -120,10 +150,10 @@ DROP TABLE IF EXISTS `tblpg`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tblpg` (
-  `pg_id` smallint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `pg_id` smallint unsigned NOT NULL AUTO_INCREMENT,
   `pg_name` varchar(200) NOT NULL,
-  `pg_ps_id` smallint(3) unsigned NOT NULL,
-  `pg_manager_id` int(10) unsigned DEFAULT NULL,
+  `pg_ps_id` smallint unsigned NOT NULL,
+  `pg_manager_id` int unsigned DEFAULT NULL,
   `pg_notes` text,
   `pg_delete` tinyint(1) DEFAULT NULL,
   `pg_deleted_date` varchar(45) DEFAULT NULL,
@@ -132,12 +162,20 @@ CREATE TABLE `tblpg` (
   `pg_created_date` varchar(45) DEFAULT NULL,
   `pg_enable` tinyint(1) DEFAULT NULL COMMENT 'Hien thi hay khong',
   `pg_name_en` varchar(200) DEFAULT NULL COMMENT 'Ten Nhom san pham tieng Anh',
-  `pg_created_author_id` int(10) unsigned DEFAULT '0',
-  `pg_language` smallint(3) unsigned DEFAULT NULL,
+  `pg_created_author_id` int unsigned DEFAULT '0',
+  `pg_language` smallint unsigned DEFAULT NULL,
   PRIMARY KEY (`pg_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `tblpg`
+--
+
+LOCK TABLES `tblpg` WRITE;
+/*!40000 ALTER TABLE `tblpg` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tblpg` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblproduct`
@@ -147,39 +185,48 @@ DROP TABLE IF EXISTS `tblproduct`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tblproduct` (
-  `product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int unsigned NOT NULL AUTO_INCREMENT,
   `product_name` varchar(300) NOT NULL COMMENT 'Ten san pham',
   `product_image` varchar(200) DEFAULT NULL COMMENT 'Anh san pham',
-  `product_price` int(10) unsigned DEFAULT NULL COMMENT 'Gia san pham',
-  `product_discount_price` int(10) unsigned DEFAULT NULL COMMENT 'Gia chiet khau',
+  `product_price` int unsigned DEFAULT NULL COMMENT 'Gia san pham',
+  `product_discount_price` int unsigned DEFAULT NULL COMMENT 'Gia chiet khau',
   `product_enable` tinyint(1) DEFAULT NULL COMMENT 'Hien thi san pham',
   `product_delete` tinyint(1) DEFAULT NULL COMMENT 'Danh dau xoa san pham',
-  `product_visited` smallint(5) unsigned DEFAULT NULL COMMENT 'Luot xem san pham',
-  `product_total` smallint(5) unsigned DEFAULT NULL COMMENT 'So luong trong kho',
-  `product_manager_id` int(10) unsigned DEFAULT NULL COMMENT 'Nguoi cap nhat',
+  `product_visited` smallint unsigned DEFAULT NULL COMMENT 'Luot xem san pham',
+  `product_total` smallint unsigned DEFAULT NULL COMMENT 'So luong trong kho',
+  `product_manager_id` int unsigned DEFAULT NULL COMMENT 'Nguoi cap nhat',
   `product_intro` text COMMENT 'Gioi thieu chung',
   `product_notes` text COMMENT 'Ghi chu',
   `product_code` varchar(45) DEFAULT NULL COMMENT 'Ma quan ly cua san pham',
   `product_created_date` varchar(45) DEFAULT NULL COMMENT 'Ngay cap nhat',
   `product_modified_date` varchar(45) DEFAULT NULL COMMENT 'Ngay sua',
-  `product_pc_id` smallint(5) unsigned NOT NULL COMMENT 'Loai san pham',
-  `product_pg_id` smallint(3) unsigned NOT NULL COMMENT 'Nhom san pham',
-  `product_ps_id` smallint(3) unsigned NOT NULL COMMENT 'He san pham',
+  `product_pc_id` smallint unsigned NOT NULL COMMENT 'Loai san pham',
+  `product_pg_id` smallint unsigned NOT NULL COMMENT 'Nhom san pham',
+  `product_ps_id` smallint unsigned NOT NULL COMMENT 'He san pham',
   `product_is_detail` tinyint(1) DEFAULT NULL COMMENT 'Da duoc cap nhat chi tiet chua?',
   `product_deleted_date` varchar(45) DEFAULT NULL COMMENT 'Ngay xoa',
   `product_deleted_author` varchar(45) DEFAULT NULL COMMENT 'Nguoi xoa',
-  `product_promotion_price` int(10) unsigned DEFAULT NULL COMMENT 'Gia khuyen mai',
-  `product_sold` smallint(5) unsigned DEFAULT NULL COMMENT 'So luong da ban',
+  `product_promotion_price` int unsigned DEFAULT NULL COMMENT 'Gia khuyen mai',
+  `product_sold` smallint unsigned DEFAULT NULL COMMENT 'So luong da ban',
   `product_best_seller` tinyint(1) DEFAULT NULL COMMENT 'Ban chay?',
   `product_promotion` tinyint(1) DEFAULT NULL COMMENT 'Khuyen mai',
-  `product_price_calc_description` smallint(3) unsigned DEFAULT NULL COMMENT 'Cach tinh gia',
+  `product_price_calc_description` smallint unsigned DEFAULT NULL COMMENT 'Cach tinh gia',
   `product_size` varchar(100) DEFAULT NULL COMMENT 'Kich thuoc',
   `product_name_en` varchar(300) DEFAULT NULL COMMENT 'Ten san pham tieng Anh',
-  `product_customer_id` int(10) unsigned DEFAULT NULL COMMENT 'Ma khach hang',
-  `product_perspective_id` tinyint(1) unsigned DEFAULT NULL COMMENT 'Phoi canh: noi that, ngoai that',
+  `product_customer_id` int unsigned DEFAULT NULL COMMENT 'Ma khach hang',
+  `product_perspective_id` tinyint unsigned DEFAULT NULL COMMENT 'Phoi canh: noi that, ngoai that',
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1587 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tblproduct`
+--
+
+LOCK TABLES `tblproduct` WRITE;
+/*!40000 ALTER TABLE `tblproduct` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tblproduct` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblps`
@@ -189,9 +236,9 @@ DROP TABLE IF EXISTS `tblps`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tblps` (
-  `ps_id` smallint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `ps_id` smallint unsigned NOT NULL AUTO_INCREMENT,
   `ps_name` varchar(200) NOT NULL,
-  `ps_manager_id` int(10) unsigned DEFAULT NULL,
+  `ps_manager_id` int unsigned DEFAULT NULL,
   `ps_notes` text,
   `ps_delete` tinyint(1) DEFAULT NULL,
   `ps_created_date` varchar(45) DEFAULT NULL,
@@ -201,11 +248,21 @@ CREATE TABLE `tblps` (
   `ps_table` varchar(45) DEFAULT NULL COMMENT 'Chi tiet cac san pham trong he duoc luu vao bang nay',
   `ps_enable` tinyint(1) DEFAULT NULL COMMENT 'Hien thi hay khong',
   `ps_name_en` varchar(200) DEFAULT NULL COMMENT 'Ten He san pham tieng Anh',
-  `ps_created_author_id` int(11) unsigned DEFAULT '0',
-  `ps_language` smallint(3) unsigned DEFAULT NULL,
+  `ps_created_author_id` int unsigned DEFAULT '0',
+  `ps_language` smallint unsigned DEFAULT NULL,
   PRIMARY KEY (`ps_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tblps`
+--
+
+LOCK TABLES `tblps` WRITE;
+/*!40000 ALTER TABLE `tblps` DISABLE KEYS */;
+INSERT INTO `tblps` VALUES (5,'Iphone 10',20216011,'This is product of Apple Inc',10,'2021-06-29','2022-03-01','2021-12-16','Tim Cook','Smartphone',1,'IphoneX',20216011,1),(6,'Iphone 11',20216012,'This is removed',100,'2022-07-21','2023-08-24','2022-08-24','Tim Cook','Smartphone',0,'Iphone 11',20216012,0),(7,'Macbook Air M2',20216013,'This is long term supported',12,'2023-11-01',NULL,NULL,'Magnus Carlsen','Laptop',1,'Macbook Air M1',20216011,1),(8,'Apple Tablet',20216014,'This is new product',2,'2023-08-25',NULL,NULL,'Tim Cook','Tablet',1,'Tablet M2',20216014,1),(9,'Nokia 1280',20216015,'This is destroyed',100,'2011-08-26','2012-08-24',NULL,'Albin Ouschan','Phone',0,'Nokia 1280',20216015,0),(10,'Xiaomi Redmi10',20216016,'This is new product of Xiaomi',10,'2023-09-24',NULL,'2023-11-26','Tim Cook','Smartphone',1,'Xiaomi Redmi 10',20216016,0),(11,'Xiami 10',20216012,'This is removed',25,'2021-08-26','2022-08-27',NULL,'Tran Dat','Smartphone',0,'Xiaomi 10',20216014,0),(13,'Samsung Z Fold',20226014,'This is long term supported',15,'2023-11-15',NULL,NULL,'Tran Dat','Smartphone',1,'Samsung Z Fold',20216015,1),(16,'Samsung Galaxy Y',20216025,'This is removed',12,'2014-11-06','2016-11-03','2015-11-05','Tim Cook','Smartphone',1,'Samsung Galaxy Y',20216024,1),(17,'Samsung Galaxy Z',0,'This is removed',0,'2014-11-06','2015-11-05','2014-12-03','Tim Cook','Smartphone',0,'Samsung Galaxy Z',0,0),(18,'Nokia 1278',0,'',0,'2023-11-10','2023-11-10','2023-11-10','','',0,'',0,0),(19,'Nokia 1234',0,'',0,'2023-11-10','2023-11-10','2023-11-10','','',0,'',0,0);
+/*!40000 ALTER TABLE `tblps` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblsection`
@@ -215,19 +272,19 @@ DROP TABLE IF EXISTS `tblsection`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tblsection` (
-  `section_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Dinh danh',
+  `section_id` smallint unsigned NOT NULL AUTO_INCREMENT COMMENT 'Dinh danh',
   `section_name` varchar(200) NOT NULL COMMENT 'Ten chuyen muc',
   `section_notes` text COMMENT 'Ghi chu tong hop',
   `section_created_date` varchar(50) DEFAULT NULL COMMENT 'Ngay tao Chuyen muc - (Cap nhat 24/05/2011)',
-  `section_manager_id` int(10) unsigned DEFAULT NULL COMMENT 'Nguoi quan ly',
+  `section_manager_id` int unsigned DEFAULT NULL COMMENT 'Nguoi quan ly',
   `section_enable` tinyint(1) DEFAULT NULL COMMENT 'Hien thi tren Site hay khong?',
   `section_delete` tinyint(1) DEFAULT NULL COMMENT 'Danh dau xoa',
   `section_last_modified` varchar(50) DEFAULT NULL COMMENT 'Ngay sua chua Chuyen muc',
-  `section_created_author_id` int(10) unsigned DEFAULT NULL COMMENT 'Nguoi tao ra Chuyen muc',
+  `section_created_author_id` int unsigned DEFAULT NULL COMMENT 'Nguoi tao ra Chuyen muc',
   `section_name_en` varchar(200) DEFAULT NULL COMMENT 'Chuyen muc tieng Anh',
-  `section_language` smallint(3) unsigned DEFAULT NULL,
+  `section_language` smallint unsigned DEFAULT NULL,
   PRIMARY KEY (`section_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -248,7 +305,7 @@ DROP TABLE IF EXISTS `tbluser`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbluser` (
-  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_name` varchar(100) NOT NULL,
   `user_pass` varchar(100) NOT NULL,
   `user_fullname` varchar(45) DEFAULT NULL,
@@ -262,16 +319,35 @@ CREATE TABLE `tbluser` (
   `user_job` varchar(500) DEFAULT NULL,
   `user_position` varchar(500) DEFAULT NULL,
   `user_applyyear` varchar(200) DEFAULT NULL COMMENT 'Nam lam viec, hoac la so nam lam viec',
-  `user_permission` smallint(5) unsigned DEFAULT NULL,
+  `user_permission` smallint unsigned DEFAULT NULL,
   `user_notes` text,
   `user_roles` varchar(200) DEFAULT NULL,
-  `user_logined` smallint(5) unsigned DEFAULT '0',
+  `user_logined` smallint unsigned DEFAULT '0',
   `user_created_date` varchar(45) NOT NULL COMMENT 'Ngay tao',
   `user_last_modified` varchar(45) DEFAULT NULL COMMENT 'Ngay sua',
   `user_last_logined` varchar(45) DEFAULT NULL COMMENT 'Ngay dang nhap',
-  `user_parent_id` int(11) NOT NULL COMMENT 'Nguoi tao ra tai khoan',
-  `user_actions` tinyint(3) unsigned DEFAULT '0' COMMENT 'Duoc thuc hien nhung cong viec gi (add, edit, del, comment)',
+  `user_parent_id` int NOT NULL COMMENT 'Nguoi tao ra tai khoan',
+  `user_actions` tinyint unsigned DEFAULT '0' COMMENT 'Duoc thuc hien nhung cong viec gi (add, edit, del, comment)',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `tbluser`
+--
+
+LOCK TABLES `tbluser` WRITE;
+/*!40000 ALTER TABLE `tbluser` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbluser` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-11-10 23:15:39
