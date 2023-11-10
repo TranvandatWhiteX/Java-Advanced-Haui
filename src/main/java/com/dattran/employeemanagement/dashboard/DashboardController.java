@@ -124,11 +124,7 @@ public class DashboardController implements Initializable {
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get().equals(ButtonType.OK)) {
                 productSystem.deleteProduct(product);
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Successfully Deleted!");
-                alert.showAndWait();
+                showAlert(Alert.AlertType.INFORMATION, "Information Message", "Successfully Deleted!");
                 showAllProducts();
             }
         }
@@ -136,18 +132,17 @@ public class DashboardController implements Initializable {
     public void extractFileEvent(ActionEvent actionEvent) {
         ExtractExcel extractExcel = new ExtractExcel();
         boolean condition = extractExcel.extractExcel();
-        Alert alert;
         if (condition) {
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Notifications");
-            alert.setContentText("Extract file successful!");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.INFORMATION, "Notifications", "Extract file successful!");
         } else {
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Notifications");
-            alert.setContentText("Extract file failure!");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.INFORMATION, "Notifications", "Extract file failure!");
         }
+    }
+    public void showAlert(Alert.AlertType alertType, String title, String contenText) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(contenText);
+        alert.showAndWait();
     }
     public void addEvent(ActionEvent actionEvent) {
         int enable, managerId, createdAuthorId, language, psDelete;
@@ -166,23 +161,14 @@ public class DashboardController implements Initializable {
             );
             boolean condition = productSystem.addProduct(product);
             if (condition) {
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Notifications");
-                alert.setContentText("Add product successful!");
-                alert.showAndWait();
+                showAlert(Alert.AlertType.INFORMATION, "Notifications", "Add product successful!");
             } else {
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Notifications");
-                alert.setContentText("Add product failure!");
-                alert.showAndWait();
+                showAlert(Alert.AlertType.INFORMATION, "Notifications", "Add product failure!");
             }
             showAllProducts();
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Notifications");
-            alert.setContentText("Please check your input, there are some fields that must be positive integer!");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.WARNING, "Notifications", "Please check your input, there are some fields that must be positive integer!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -194,10 +180,7 @@ public class DashboardController implements Initializable {
             int id = Integer.parseInt(idTextField.getText());
             ProductSystemObject product = productSystem.getProductById(id);
             if (product == null) {
-                alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Notifications");
-                alert.setContentText("Product not found!");
-                alert.showAndWait();
+                showAlert(Alert.AlertType.WARNING, "Notifications", "Product not found!");
             } else {
                 if (!enableTextField.getText().isEmpty()) {
                     enable = Integer.parseInt(enableTextField.getText());
@@ -244,18 +227,12 @@ public class DashboardController implements Initializable {
                     product.setProductSystem_name_en(nameENTextField.getText());
                 }
                 productSystem.updateProduct(product);
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Notifications");
-                alert.setContentText("Update product success!");
-                alert.showAndWait();
+                showAlert(Alert.AlertType.INFORMATION, "Notifications", "Update product success!");
                 showAllProducts();
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Notifications");
-            alert.setContentText("Please check your input, there are some fields that must be positive integer!");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.WARNING, "Notifications", "Please check your input, there are some fields that must be positive integer!");
         } catch (Exception e) {
             e.printStackTrace();
         }
