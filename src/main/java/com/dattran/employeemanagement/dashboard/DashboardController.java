@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.lang.model.type.NullType;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -145,27 +147,69 @@ public class DashboardController implements Initializable {
         alert.showAndWait();
     }
     public void addEvent(ActionEvent actionEvent) {
+        // Add function must have name, other field if not has default value
+        // All field cannot be null because of database's design
         int enable, managerId, createdAuthorId, language, psDelete;
-        Alert alert;
         try {
-            enable = Integer.parseInt(enableTextField.getText());
-            managerId = Integer.parseInt(managerIDTextField.getText());
-            createdAuthorId = Integer.parseInt(createdAuthorTextField.getText());
-            language = Integer.parseInt(languageTextField.getText());
-            psDelete = Integer.parseInt(deletedTextField.getText());
-            ProductSystemObject product = new ProductSystemObject(
-                    nameTextField.getText(), managerId, psDelete,
-                    notesTextField.getText(), createdTextField.getValue().toString(), deletedDateTextField.getValue().toString(),
-                    modifiedTextField.getValue().toString(), deletedAuthorTextField.getText(), tableTextField.getText(), enable,
-                    nameENTextField.getText(), createdAuthorId, language
-            );
-            boolean condition = productSystem.addProduct(product);
-            if (condition) {
-                showAlert(Alert.AlertType.INFORMATION, "Notifications", "Add product successful!");
+            // If text field is null, it has default value = 0
+            if (!enableTextField.getText().isEmpty()) {
+                enable = Integer.parseInt(enableTextField.getText());
             } else {
-                showAlert(Alert.AlertType.INFORMATION, "Notifications", "Add product failure!");
+                enable = 0;
             }
-            showAllProducts();
+            if (!managerIDTextField.getText().isEmpty()) {
+                managerId = Integer.parseInt(managerIDTextField.getText());
+            } else {
+                managerId = 0;
+            }
+            if (!createdAuthorTextField.getText().isEmpty()) {
+                createdAuthorId = Integer.parseInt(createdAuthorTextField.getText());
+            } else {
+                createdAuthorId = 0;
+            }
+            if (!languageTextField.getText().isEmpty()) {
+                language = Integer.parseInt(languageTextField.getText());
+            } else {
+                language = 0;
+            }
+            if (!deletedTextField.getText().isEmpty()) {
+                psDelete = Integer.parseInt(deletedTextField.getText());
+            } else {
+                psDelete = 0;
+            }
+            if (nameTextField.getText().isEmpty()) {
+                showAlert(Alert.AlertType.WARNING, "Warning", "You must enter name of product at least!");
+            } else {
+                String createdDate, modifiedDate, deletedDate;
+                if (createdTextField.getValue() != null) {
+                    createdDate = createdTextField.getValue().toString();
+                } else {
+                    createdDate = LocalDate.now().toString();
+                }
+                if (modifiedTextField.getValue() != null) {
+                    modifiedDate = modifiedTextField.getValue().toString();
+                } else {
+                    modifiedDate = LocalDate.now().toString();
+                }
+                if (deletedDateTextField.getValue() != null) {
+                    deletedDate = deletedDateTextField.getValue().toString();
+                } else {
+                    deletedDate = LocalDate.now().toString();
+                }
+                ProductSystemObject product = new ProductSystemObject(
+                        nameTextField.getText(), managerId, psDelete,
+                        notesTextField.getText(), createdDate, deletedDate,
+                        modifiedDate, deletedAuthorTextField.getText(), tableTextField.getText(), enable,
+                        nameENTextField.getText(), createdAuthorId, language
+                );
+                boolean condition = productSystem.addProduct(product);
+                if (condition) {
+                    showAlert(Alert.AlertType.INFORMATION, "Notifications", "Add product successful!");
+                } else {
+                    showAlert(Alert.AlertType.INFORMATION, "Notifications", "Add product failure!");
+                }
+                showAllProducts();
+            }
         } catch (NumberFormatException e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.WARNING, "Notifications", "Please check your input, there are some fields that must be positive integer!");

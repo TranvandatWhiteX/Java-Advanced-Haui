@@ -2,8 +2,6 @@ package com.dattran.employeemanagement.uitl;
 
 import com.dattran.employeemanagement.database.ProductSystem;
 import com.dattran.employeemanagement.model.ProductSystemObject;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -11,8 +9,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class ExtractExcel {
     public boolean extractExcel() {
@@ -57,7 +57,9 @@ public class ExtractExcel {
         }
         // ghi dữ liệu xuống file
         try {
-            File file = new File("E:/Java/JavaFx/EmployeeManagement/src/main/resources/file/excel.xlsx");
+            String path = new File("src/main/resources/file/excel.xlsx").getAbsolutePath();
+            //File file = new File("E:/Java/JavaFx/EmployeeManagement/src/main/resources/file/excel.xlsx");
+            File file = new File(path);
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -69,5 +71,10 @@ public class ExtractExcel {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        ExtractExcel excel = new ExtractExcel();
+        excel.extractExcel();
     }
 }
